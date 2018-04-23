@@ -3,16 +3,17 @@ import {connect} from 'react-redux'
 import {fetchImage} from '../../actions/image'
 
 class Image extends PureComponent {
-
+    
   componentWillMount(){
-    this.props.fetchImage()
+    this.props.fetchImage(1)
+    
 }
 
   render() {
       const {image} = this.props
     return (
       <div>
-      <img src={image.imageURL} alt="dog"></img>
+      <img src={image} alt="dog"></img>
       </div>
     )
   }
