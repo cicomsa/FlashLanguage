@@ -12,6 +12,10 @@ import { Image } from '../images/entity'
       return Image.findOneById(id)
     }
   
+    @Get('/images')
+    allImages() {
+        return Image.find()
+    }
   }
   
   
