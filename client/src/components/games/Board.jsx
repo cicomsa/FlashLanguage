@@ -1,14 +1,19 @@
 import React from 'react'
 import './Board.css'
+import {Link} from 'react-router-dom'
+
+
+const test = true
 
 const renderCel = (makeMove, rowIndex, cellIndex, symbol, hasTurn) => {
+
   return (
     <button
       className="board-tile"
       disabled={hasTurn}
-      onClick={() => makeMove(rowIndex, cellIndex)}
+      onClick={() => {if (test === true) makeMove(rowIndex, cellIndex)}}
       key={`${rowIndex}-${cellIndex}`}
-    >{symbol || '-'}</button>
+    ><Link to ='/images/:id'>{symbol || '_'}</Link></button>
   )
 }
 
