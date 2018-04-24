@@ -8,6 +8,7 @@ import LogoutPage from './components/logout/LogoutPage'
 import './App.css'
 import TopBar from './components/layout/TopBar'
 import WordToGuess from './components/game/WordToGuess'
+import Images from './components/game/images'
 
 // <Route exact path="/signup" component={SignupPage} />
 // <Route exact path="/games" component={GamesList} />
@@ -28,6 +29,8 @@ class App extends Component {
             <Route exact path="/games" component={GamesList} />
             <Route exact path="/games/:id" component={GameDetails} />
             <Route exact path="/images/:id" component={WordToGuess} />
+            <Route exact path="/images/" component={Images} />
+
             <Route exact path="/" render={ () => <Redirect to="/games" /> } />
           </main>
         </div>
