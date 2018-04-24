@@ -9,8 +9,6 @@ class Form extends PureComponent {
     state = {}
 
 
-
-
  	handleChange = (event) => {
 
         this.setState({value: event.target.value})
