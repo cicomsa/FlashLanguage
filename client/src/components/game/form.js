@@ -8,8 +8,8 @@ import { SUBMIT } from '../../actions/image'
 class Form extends PureComponent {
     state = {}
 
- 
-	
+
+
 
  	handleChange = (event) => {
 
@@ -27,20 +27,20 @@ class Form extends PureComponent {
 	}
 
 	render() {
-        
+
 		return (
-           
+
             <div>
 			<form className = "Form"
             onSubmit={this.handleSubmit}>
 				<div>
-                    <h2>Ce este asta?</h2>  
+                    <h2>Ce este asta?</h2>
 					<input name="word" value={this.state.word} type ="text" id="word" onChange={this.handleChange}/>
                     <button id = "goButton" type="submit">Go!</button>
-                </div>    
+                </div>
 			</form>
 
-           
+
             </div>
 		)
 	}
@@ -49,9 +49,8 @@ class Form extends PureComponent {
 const mapStateToProps = function(state) {
     return {
         input: state.input
-         
+
     }
   }
-  
-  export default connect (mapStateToProps)(Form)
 
+  export default connect (mapStateToProps)(Form)

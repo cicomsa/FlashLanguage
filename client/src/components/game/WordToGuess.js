@@ -1,30 +1,32 @@
 import React, {PureComponent} from 'react'
-import Image from './image'
-import appleImage from './appleImage.jpg'
-import {Link} from 'react-router-dom'
-import {hashHistory} from 'react-router'
+import {connect} from 'react-redux'
+import {fetchImage} from '../../actions/image'
 import FormPage from './formPage'
-import './WordToGuess.css'
 
+class WordToGuess extends PureComponent {
 
-export default class WordToGuess extends PureComponent {
+    componentWillMount(props){
+      this.props.fetchImage(this.props.match.params.id)
+      // this.props.fetchWord(this.props.match.params.id)
 
-    handleBack() {
-        window.history.go(-1);
-        
-      }
+  }
 
     render() {
-        return (
-            <div id="guessWord">    
-               
-                <Image/>
-                <br/>
-                <FormPage/>
-                <button onClick={this.handleBack}>Next image</button>
-            </div>
-        )
+        const {image} = this.props
+      return (
+        <div>
+        <img src={image.imageUrl} alt="dog" width="500px"></img>
+        <p>{image.word}</p>
+        <FormPage />
+        </div>
+      )
     }
-      
-}
+  }
 
+  const mapStateToProps = function (state) {
+    return {
+      image:state.image
+    }
+  }
+
+  export default connect(mapStateToProps, {fetchImage})(WordToGuess)
