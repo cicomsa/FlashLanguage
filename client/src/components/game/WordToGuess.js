@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchImage} from '../../actions/image'
-
+import FormPage from './formPage'
 
 class WordToGuess extends PureComponent {
 
@@ -17,7 +17,7 @@ class WordToGuess extends PureComponent {
         <div>
         <img src={image.imageUrl} alt="dog" width="500px"></img>
         <p>{image.word}</p>
-
+        <FormPage />
         </div>
       )
     }
