@@ -11,6 +11,11 @@ class WordToGuess extends PureComponent {
 
   }
 
+  handleBack() {
+    window.history.go(-1);
+    
+  }
+
     render() {
         const {image} = this.props
       return (
@@ -18,6 +23,7 @@ class WordToGuess extends PureComponent {
         <img src={image.imageUrl} alt="dog" width="500px"></img>
         <p>{image.word}</p>
         <FormPage />
+        <button onClick={this.handleBack}>Next image</button>
         </div>
       )
     }
@@ -30,3 +36,4 @@ class WordToGuess extends PureComponent {
   }
 
   export default connect(mapStateToProps, {fetchImage})(WordToGuess)
+
