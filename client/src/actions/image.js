@@ -6,10 +6,10 @@ export const SUBMIT = 'SUBMIT'
 
 
 
-export const fetchImage = (imageId) => (dispatch) => {
+export const fetchImage = (id) => (dispatch) => {
    // console.log(imageId)
 request
-    .get(`${baseUrl}/images/${imageId}`)
+    .get(`${baseUrl}/images/${id}`)
     .then(response => dispatch({
     type: FETCHED_IMAGE,
     payload: response.body

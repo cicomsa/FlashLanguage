@@ -1,25 +1,25 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import Form from './form'
-import {Redirect} from 'react-router-dom'
+// import {Redirect} from 'react-router-dom'
 import { fetchWord } from '../../actions/word'
-import {SUBMIT} from '../../actions/image'
+// import {SUBMIT} from '../../actions/image'
 
 class FormPage extends PureComponent {
-    
-    componentDidMount(props){
-        this.props.fetchWord(1)
+
+    componentWillMount(props){
+        this.props.fetchImage(this.props.match.params.id)
     }
 
 	render() {
 
         const {word} = this.props
         const {input} = this.props
-        function raspuns() {
-        if (input === word){
-            <p>Raspuns corect!</p>
-
-        }}
+        // function raspuns() {
+        // if (input === word){
+        //     <p>Raspuns corect!</p>
+        //
+        // }}
 
 		return (
 			<div>
@@ -32,7 +32,7 @@ class FormPage extends PureComponent {
 	}
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
     return {
         word:state.word,
         input: state.input
