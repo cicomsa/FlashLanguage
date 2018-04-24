@@ -4,7 +4,7 @@ import {fetchImage} from '../../actions/image'
 
 class Image extends PureComponent {
     
-  componentWillMount(){
+  componentDidMount(props){
     this.props.fetchImage(1)
     
 }
@@ -13,7 +13,8 @@ class Image extends PureComponent {
       const {image} = this.props
     return (
       <div>
-      <img src={image} alt="dog"></img>
+      <img src={image} alt="dog" width="500px"></img>
+    
       </div>
     )
   }
