@@ -22,8 +22,8 @@ class App extends Component {
             <Route exact path="/logout" component={LogoutPage} />
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/games" component={GamesList} />
-            <Route exact path="/games/:gameid" component={GameDetails} />
-            <Route exact path="/games/:gameid/images/:imageid" component={WordToGuess} />
+            <Route exact path="/games/:id" component={GameDetails} />
+            <Route exact path="/games/:id/images/:imageid" component={WordToGuess} />
 
             <Route exact path="/" render={ () => <Redirect to="/games" /> } />
           </main>

@@ -14,8 +14,6 @@ const updateGames = games => ({
   payload: games
 })
 
-
-
 const addGame = game => ({
   type: ADD_GAME,
   payload: game
