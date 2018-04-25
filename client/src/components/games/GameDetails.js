@@ -3,12 +3,11 @@ import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {getGames, joinGame, updateGame, updateTurn} from '../../actions/games'
 import {getUsers} from '../../actions/users'
+import {storeCell} from '../../actions/image'
 import {userId} from '../../jwt'
 import Paper from 'material-ui/Paper'
 import Board from './Board'
 import './GameDetails.css'
-
-const test = false
 
 class GameDetails extends PureComponent {
 
@@ -22,20 +21,7 @@ class GameDetails extends PureComponent {
 
   joinGame = () => this.props.joinGame(this.props.game.id)
 
-  makeMove = (toRow, toCell) => {
-    const {game, updateGame } = this.props
-
-    const oldBoard = game.board
-    const board = game.board.map(
-      (row, rowIndex) => row.map((cell, cellIndex) => {
-        if (rowIndex === toRow && cellIndex === toCell) return game.turn
-        else return cell
-      })
-    )
-    if(test === true) updateGame(game.id, board)
-    else return updateGame(game.id, oldBoard)
-  }
-
+  storeCell = (row, cell) => this.props.storeCell(row, cell)
 
 
   render() {
@@ -80,7 +66,7 @@ class GameDetails extends PureComponent {
 
       {
         game.status !== 'pending' &&
-        <Board board={game.board} makeMove={this.makeMove} />
+        <Board board={game.board} storeCell={this.storeCell} />
       }
     </Paper>)
   }
@@ -94,7 +80,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-  getGames, getUsers, joinGame, updateGame, updateTurn
+  getGames, getUsers, joinGame, updateGame, updateTurn, storeCell
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameDetails)

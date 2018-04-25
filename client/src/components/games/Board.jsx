@@ -1,19 +1,21 @@
 import React from 'react'
 import './Board.css'
+import {Link} from 'react-router-dom'
 
-const renderCel = (makeMove, rowIndex, cellIndex, symbol, hasTurn) => {
+const id = (Math.floor((Math.random() * 3) + 1)).toString()
+
+const renderCel = (storeCell, rowIndex, cellIndex, symbol, hasTurn) => {
   return (
     <button
       className="board-tile"
       disabled={hasTurn}
-      onClick={() => makeMove(rowIndex, cellIndex)}
+      onClick={() => {if (test === true) storeCell(rowIndex, cellIndex)}}
       key={`${rowIndex}-${cellIndex}`}
-    >{symbol || '-'}</button>
+    ><Link to ={`/images/${id}`}>{symbol || '_'}</Link></button>
   )
 }
-
-export default ({board, makeMove}) => board.map((cells, rowIndex) =>
+export default ({board, storeCell}) => board.map((cells, rowIndex) =>
   <div key={rowIndex}>
-    {cells.map((symbol, cellIndex) => renderCel(makeMove, rowIndex, cellIndex,symbol,false))}
+    {cells.map((symbol, cellIndex) => renderCel(storeCell, rowIndex, cellIndex,symbol,false))}
   </div>
 )
