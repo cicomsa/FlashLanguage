@@ -1,26 +1,44 @@
 import React from 'react'
 import './Board.css'
 import {Link} from 'react-router-dom'
-
+import {storeCell} from '../../actions/image'
+import {connect} from 'react-redux'
 
 const test = true
 
 const id = (Math.floor((Math.random() * 3) + 1)).toString()
 
-const renderCel = (makeMove, rowIndex, cellIndex, symbol, hasTurn) => {
+const renderCel = (storeCell, rowIndex, cellIndex, symbol, hasTurn) => {
 
+storeCell = (rowIndex, cellIndex) => {
+this.props.storeCell(rowIndex, cellIndex)
+}
+let whatever = ""
   return (
     <button
       className="board-tile"
       disabled={hasTurn}
-      onClick={() => {if (test === true) makeMove(rowIndex, cellIndex)}}
       key={`${rowIndex}-${cellIndex}`}
-    ><Link to ={`/images/${id}`}>{symbol || '_'}</Link></button>
+      onClick={
+      () => whatever = rowIndex
+
+      }>
+      { test && <Link to ={`/images/${id}`}>{symbol || '_'}</Link> }
+      {console.log(rowIndex, cellIndex)}
+      {console.log(whatever)}
+      </button>
   )
 }
 
-export default ({board, makeMove}) => board.map((cells, rowIndex) =>
+const mapStateToProps = function (state) {
+  return {
+    currentCell : state.currentCell
+  }
+}
+
+
+export default connect (mapStateToProps, {storeCell}) (({board, storeCell}) => board.map((cells, rowIndex) =>
   <div key={rowIndex}>
-    {cells.map((symbol, cellIndex) => renderCel(makeMove, rowIndex, cellIndex,symbol,false))}
+    {cells.map((symbol, cellIndex) => renderCel(storeCell, rowIndex, cellIndex,symbol,false))}
   </div>
-)
+))

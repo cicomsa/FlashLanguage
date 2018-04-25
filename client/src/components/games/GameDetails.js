@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {getGames, joinGame, updateGame} from '../../actions/games'
+import { storeCell } from '../../actions/image'
 import {getUsers} from '../../actions/users'
 import {userId} from '../../jwt'
 import Paper from 'material-ui/Paper'
@@ -28,6 +29,7 @@ class GameDetails extends PureComponent {
         else return cell
       })
     )
+
     updateGame(game.id, board)
   }
 
@@ -57,7 +59,7 @@ class GameDetails extends PureComponent {
       {
         game.status === 'started' &&
         player && player.symbol === game.turn &&
-        <div>It's your turn!</div>
+        <div>Its your turn!</div>
       }
 
       {
