@@ -66,7 +66,7 @@ class GameDetails extends PureComponent {
 
       {
         game.status !== 'pending' &&
-        <Board board={game.board} storeCell={this.storeCell} />
+        <Board board={game.board} gameId = {game.id} storeCell={this.storeCell} />
       }
     </Paper>)
   }

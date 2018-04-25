@@ -10,33 +10,29 @@ class WordToGuess extends PureComponent {
       this.props.fetchImage(this.props.match.params.id)
   }
 
-  // handleBack() {
-  //     const {game, updateGame} = this.props
-  //     const {image} = this.props
-  //     const {input} = this.props
-  //     const {currentCell} = this.props
-  //
-  //
-  //     function makeMove(toRow, toCell) {
-  //
-  //       const board = game.board.map(
-  //         (row, rowIndex) => row.map((cell, cellIndex) => {
-  //           if (rowIndex === toRow && cellIndex === toCell) return game.turn
-  //           else return cell
-  //         })
-  //       )
-  //       // console.log(input)
-  //       // if (input !== null) {
-  //       //     if (input === image.word)
-  //       // return reupdateGame(game.id, board)
-  //
-  //       if (game.turn === "x") return game.turn = "o"
-  //       else return game.turn = "x"
-  //     }
-  //
-  //     makeMove(currentCell.row, currentCell.cell)
-  //   window.history.go(-1);
-  // }
+  makeMove = (toRow, toCell) => {
+    const {game, updateGame, input, image } = this.props
+
+    const oldBoard = game.board
+    const board = game.board.map(
+      (row, rowIndex) => row.map((cell, cellIndex) => {
+        if (rowIndex === toRow && cellIndex === toCell) return game.turn
+        else return cell
+      })
+    )
+    if(input === image.word) updateGame(game.id, board)
+    else return updateGame(game.id, oldBoard)
+  }
+
+  handleBack() {
+      // const {game, updateGame} = this.props
+      // const {image} = this.props
+      // const {input} = this.props
+      const {currentCell} = this.props
+      //
+      this.makeMove(currentCell.row, currentCell.cell)
+      window.history.go(-1);
+  }
 
     render() {
         const {image} = this.props
@@ -56,7 +52,7 @@ class WordToGuess extends PureComponent {
         input: state.input,
       image:state.image,
       currentCell: state.currentCell,
-      game: state.game
+      games: state.games
     }
   }
 

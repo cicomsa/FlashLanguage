@@ -9,10 +9,6 @@ import './App.css'
 import TopBar from './components/layout/TopBar'
 import WordToGuess from './components/game/WordToGuess'
 
-// <Route exact path="/signup" component={SignupPage} />
-// <Route exact path="/games" component={GamesList} />
-// <Route exact path="/games/:id" component={GameDetails} />
-
 class App extends Component {
   render() {
     return (
@@ -27,7 +23,7 @@ class App extends Component {
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/games" component={GamesList} />
             <Route exact path="/games/:id" component={GameDetails} />
-            <Route exact path="/images/:id" component={WordToGuess} />
+            <Route exact path="/games/:id/images/:id" component={WordToGuess} />
 
             <Route exact path="/" render={ () => <Redirect to="/games" /> } />
           </main>
