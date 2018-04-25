@@ -1,13 +1,15 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchImage} from '../../actions/image'
+import {getGames} from '../../actions/games'
 import FormPage from './formPage'
 
 
 class WordToGuess extends PureComponent {
 
     componentWillMount(props){
-      this.props.fetchImage(this.props.match.params.id)
+      this.props.fetchImage(this.props.match.params.imageid)
+      this.props.getGames(this.props.match.params.gameid)
   }
 
   makeMove = (toRow, toCell) => {
@@ -25,11 +27,8 @@ class WordToGuess extends PureComponent {
   }
 
   handleBack() {
-      // const {game, updateGame} = this.props
-      // const {image} = this.props
-      // const {input} = this.props
       const {currentCell} = this.props
-      //
+
       this.makeMove(currentCell.row, currentCell.cell)
       window.history.go(-1);
   }
@@ -50,10 +49,10 @@ class WordToGuess extends PureComponent {
   const mapStateToProps = function (state) {
     return {
         input: state.input,
-      image:state.image,
-      currentCell: state.currentCell,
-      games: state.games
+        image:state.image,
+        currentCell: state.currentCell,
+        games: state.games
     }
   }
 
-  export default connect(mapStateToProps, {fetchImage})(WordToGuess)
+  export default connect(mapStateToProps, {fetchImage, getGames})(WordToGuess)
