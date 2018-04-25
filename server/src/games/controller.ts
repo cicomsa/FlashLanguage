@@ -89,7 +89,7 @@ export default class GameController {
     if (!player) throw new ForbiddenError(`You are not part of this game`)
     if (game.status !== 'started') throw new BadRequestError(`The game is not started yet`)
     if (player.symbol !== game.turn) throw new BadRequestError(`It's not your turn`)
-    if (!isValidTransition(player.symbol, game.board, update.board)) {
+    if (!isValidTransition(player.symbol, game.board, game.board)) {
       throw new BadRequestError(`Invalid move`)
     }    
 
@@ -108,8 +108,6 @@ export default class GameController {
     }
     game.board = update.board
     await game.save()
-
-    console.log('3')
     
     io.emit('action', {
       type: 'UPDATE_GAME',
@@ -118,6 +116,7 @@ export default class GameController {
 
     return game
   }
+
 
   @Authorized()
   @Get('/games/:id([0-9]+)')

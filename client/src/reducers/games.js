@@ -21,6 +21,7 @@ export default (state = null, {type, payload}) => {
     case UPDATE_GAMES:
       return payload.reduce((games, game) => {
         games[game.id] = game
+        console.log('reducer'+ game.turn)
         return games
       }, {})
 

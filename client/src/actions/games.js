@@ -85,7 +85,7 @@ export const updateGame = (gameId, board) => (dispatch, getState) => {
 }
 
 export const updateTurn = (gameId, turn) => (dispatch, getState) => {
-    console.log(turn)
+    console.log("Action: " + turn)
     const state = getState()
     const jwt = state.currentUser.jwt
 
