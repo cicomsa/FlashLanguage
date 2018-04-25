@@ -1,13 +1,14 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
-import {getGames, joinGame, updateGame} from '../../actions/games'
-import { storeCell } from '../../actions/image'
+import {getGames, joinGame, updateGame, updateTurn} from '../../actions/games'
 import {getUsers} from '../../actions/users'
 import {userId} from '../../jwt'
 import Paper from 'material-ui/Paper'
 import Board from './Board'
 import './GameDetails.css'
+
+const test = false
 
 class GameDetails extends PureComponent {
 
@@ -18,10 +19,11 @@ class GameDetails extends PureComponent {
     }
   }
 
+
   joinGame = () => this.props.joinGame(this.props.game.id)
 
   makeMove = (toRow, toCell) => {
-    const {game, updateGame} = this.props
+    const {game, updateGame, updateTurn} = this.props
 
     const board = game.board.map(
       (row, rowIndex) => row.map((cell, cellIndex) => {
@@ -29,8 +31,10 @@ class GameDetails extends PureComponent {
         else return cell
       })
     )
-
-    updateGame(game.id, board)
+    if(test === true) updateGame(game.id, board)
+    else updateTurn(game.id, game.turn)
+    console.log(board)
+    console.log(game.board)
   }
 
 
@@ -91,7 +95,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-  getGames, getUsers, joinGame, updateGame
+  getGames, getUsers, joinGame, updateGame, updateTurn
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameDetails)

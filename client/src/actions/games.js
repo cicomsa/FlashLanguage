@@ -14,6 +14,8 @@ const updateGames = games => ({
   payload: games
 })
 
+
+
 const addGame = game => ({
   type: ADD_GAME,
   payload: game
@@ -80,4 +82,19 @@ export const updateGame = (gameId, board) => (dispatch, getState) => {
     .send({ board })
     .then(_ => dispatch(updateGameSuccess()))
     .catch(err => console.error(err))
+}
+
+export const updateTurn = (gameId, turn) => (dispatch, getState) => {
+    console.log(turn)
+    const state = getState()
+    const jwt = state.currentUser.jwt
+
+    if (isExpired(jwt)) return dispatch(logout())
+
+    request
+      .patch(`${baseUrl}/games/${gameId}`)
+      .set('Authorization', `Bearer ${jwt}`)
+      .send({ turn })
+      .then(_ => dispatch(updateGameSuccess()))
+      .catch(err => console.error(err))
 }
