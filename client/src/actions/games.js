@@ -89,7 +89,7 @@ export const updateTurn = (gameId, turn) => (dispatch, getState) => {
     const state = getState()
     const jwt = state.currentUser.jwt
 
-    if (isExpired(jwt)) return dispatch(logout())
+    if (isExpired(jwt )) return dispatch(logout())
 
     request
       .patch(`${baseUrl}/games/${gameId}`)

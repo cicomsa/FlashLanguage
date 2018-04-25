@@ -23,7 +23,7 @@ class GameDetails extends PureComponent {
   joinGame = () => this.props.joinGame(this.props.game.id)
 
   makeMove = (toRow, toCell) => {
-    const {game, updateGame, updateTurn} = this.props
+    const {game, updateGame, updateTurn } = this.props
 
     const board = game.board.map(
       (row, rowIndex) => row.map((cell, cellIndex) => {
