@@ -9,7 +9,7 @@ const renderCel = (makeMove, rowIndex, cellIndex, symbol, hasTurn, gameId, fetch
      <button
       className="board-tile"
       disabled={hasTurn}
-      onClick={() => {makeMove(rowIndex, cellIndex) ; fetchImage(Math.floor(Math.random() * 4)); restore()}}
+      onClick={() => {makeMove(rowIndex, cellIndex) ; fetchImage(Math.floor(Math.random() * 6) + 1); restore()}}
       key={`${rowIndex}-${cellIndex}`}
     >{symbol || "_"}</button>
   )

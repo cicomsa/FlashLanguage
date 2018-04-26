@@ -5,9 +5,6 @@ import { SUBMIT } from '../../actions/image'
 class Form extends PureComponent {
     state = {}
 
-
-
-
  	handleChange = (event) => {
 
         this.setState({value: event.target.value})
@@ -30,12 +27,11 @@ class Form extends PureComponent {
 			<form className = "Form"
             onSubmit={this.handleSubmit}>
 				<div>
-                    <h2>Ce este asta?</h2>
+                    <h2>Ce-i asta?</h2>
 					<input name="word" value={this.state.word} type ="text" id="word" onChange={this.handleChange}/>
                     <button id = "goButton" type="submit">Go!</button>
                 </div>
 			</form>
-
 
             </div>
 		)
