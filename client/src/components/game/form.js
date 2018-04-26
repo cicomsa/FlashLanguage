@@ -2,11 +2,10 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { SUBMIT } from '../../actions/image'
 
-
-
-
 class Form extends PureComponent {
     state = {}
+
+
 
 
  	handleChange = (event) => {
@@ -20,7 +19,6 @@ class Form extends PureComponent {
 
         e.preventDefault()
 		this.props.dispatch({type:SUBMIT, payload: this.state.value})
-		e.preventDefault()
 
 	}
 

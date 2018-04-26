@@ -5,7 +5,7 @@ import currentUser from './currentUser'
 import signup from './signup'
 import image from './image'
 import input from './input'
-// import word from './word'
+import currentCell from './currentCell'
 
 export default {
   games,
@@ -15,4 +15,5 @@ export default {
   signup,
   image,
   input,
+  currentCell
 }
