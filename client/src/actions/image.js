@@ -3,9 +3,7 @@ import {baseUrl} from '../constants'
 
 export const FETCHED_IMAGE = "FETCHED_IMAGE"
 export const SUBMIT = 'SUBMIT'
-export const STORE_CELL = 'STORE_CELL'
 export const RESTORE = 'RESTORE'
-
 
 export const fetchImage = (id) => (dispatch) => {
    // console.log(imageId)
@@ -18,15 +16,8 @@ request
     .catch(err => console.log(err))
 }
 
-
-
 export const submit = (input) => ({
     type: SUBMIT
-})
-
-export const storeCell = (row, cell) => ({
-    type: STORE_CELL,
-    payload: {row: row, cell: cell}
 })
 
 export const restore = () => ({

@@ -7,7 +7,7 @@ import {restore, fetchImage} from '../../actions/image'
 import {userId} from '../../jwt'
 import Paper from 'material-ui/Paper'
 import Board from './Board'
-import FormPage from '../game/formPage'
+import Form from './Form'
 import './GameDetails.css'
 
 const id = (Math.floor((Math.random() * 3) + 1)).toString()
@@ -32,7 +32,6 @@ class GameDetails extends PureComponent {
 
   joinGame = () => this.props.joinGame(this.props.game.id)
 
-  storeCell = (row, cell) => this.props.storeCell(row, cell)
 
   makeMove = (toRow, toCell) => {
       const {game, updateGame, input, image } = this.props
@@ -74,7 +73,7 @@ class GameDetails extends PureComponent {
         player && player.symbol === game.turn &&
         <div>
         <p>Its your turn!</p>
-        <FormPage/>
+        <Form/><br></br>
         <img src={image.imageUrl} alt="dog" width="500px"></img>
         { input !== null ? (input === image.word? <p>Raspuns corect, now play the game!</p>: <p>Raspuns gresit</p>) : <p></p> }
 
