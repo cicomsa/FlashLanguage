@@ -6,17 +6,12 @@
   decoration: none;
 }
 
-.Link {
-
-    font-size: 70px;
-}
-
-.button {
+button {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
 }
 
-.button:hover {
+button:hover {
     background-color: #4CAF50; /* Green */
     color: white;
 }

@@ -15,7 +15,6 @@ class FormPage extends PureComponent {
 		return (
 			<div>
                 <Form />
-               { input !== null ? (input === image.word? <p>Raspuns corect</p> : <p>Raspuns gresit</p>) : <p></p> }
 			</div>
 		)
 	}

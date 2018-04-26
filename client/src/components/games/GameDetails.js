@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {getGames, joinGame, updateGame} from '../../actions/games'
 import {getUsers} from '../../actions/users'
-import {storeCell, fetchImage} from '../../actions/image'
+import {restore, fetchImage} from '../../actions/image'
 import {userId} from '../../jwt'
 import Paper from 'material-ui/Paper'
 import Board from './Board'
@@ -22,6 +22,13 @@ class GameDetails extends PureComponent {
     }
   }
 
+  fetchImage = (id) => {
+      this.props.fetchImage(id)
+  }
+
+  restore = () => {
+      this.props.restore()
+  }
 
   joinGame = () => this.props.joinGame(this.props.game.id)
 
@@ -42,7 +49,7 @@ class GameDetails extends PureComponent {
   }
 
   render() {
-    const {game, users, authenticated, userId, input, image, currentCell} = this.props
+    const {game, users, authenticated, userId, input, image} = this.props
 
     if (!authenticated) return (
 			<Redirect to="/login" />
@@ -88,9 +95,13 @@ class GameDetails extends PureComponent {
       <hr />
 
       {
+        input !== null &&
         game.status !== 'pending' &&
-        <Board board={game.board} gameId = {game.id} makeMove={this.makeMove} />
+        <div>
+        <p>If you got it right, you''ll conquer the cell, if not, go back to learn your vocabulary. Give it a go:</p>
+        <Board board={game.board} gameId = {game.id} makeMove={this.makeMove} fetchImage={this.fetchImage} restore={this.restore}/>
 
+        </div>
       }
 
     </Paper>)
@@ -107,7 +118,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = {
-  getGames, getUsers, joinGame, updateGame, fetchImage
+  getGames, getUsers, joinGame, updateGame, fetchImage, restore
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameDetails)
