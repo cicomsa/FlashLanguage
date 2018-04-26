@@ -90,7 +90,7 @@ describe('isValidTransition()', () => {
     equal(isValidTransition('o', from, to), true)
   })
 
-  it('should not allow to overwrite', () => {
+  it('should allow to overwrite in order to update the turn ', () => {
     const from: Board = [
       ['o', null, null],
       [null, 'x', 'o'],
