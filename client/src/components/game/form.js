@@ -17,8 +17,8 @@ class Form extends PureComponent {
 
 	handleSubmit = (e) => {
 
-        e.preventDefault()
 		this.props.dispatch({type:SUBMIT, payload: this.state.value})
+        e.preventDefault()
 
 	}
 

@@ -22,6 +22,9 @@ class GameDetails extends PureComponent {
     }
   }
 
+  fetchImage = (id) => {
+      this.props.fetchImage(id)
+  }
 
   joinGame = () => this.props.joinGame(this.props.game.id)
 
@@ -42,7 +45,7 @@ class GameDetails extends PureComponent {
   }
 
   render() {
-    const {game, users, authenticated, userId, input, image, currentCell} = this.props
+    const {game, users, authenticated, userId, input, image} = this.props
 
     if (!authenticated) return (
 			<Redirect to="/login" />
@@ -88,9 +91,13 @@ class GameDetails extends PureComponent {
       <hr />
 
       {
+        input !== null &&
         game.status !== 'pending' &&
-        <Board board={game.board} gameId = {game.id} makeMove={this.makeMove} />
+        <div>
+        <p>If you got it right, you''ll conquer the cell, if not, go back to learn your vocabulary. Give it a go:</p>
+        <Board board={game.board} gameId = {game.id} makeMove={this.makeMove} fetchImage={this.fetchImage} />
 
+        </div>
       }
 
     </Paper>)
