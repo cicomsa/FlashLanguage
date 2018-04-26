@@ -4,18 +4,18 @@ import {Link} from 'react-router-dom'
 
 const id = (Math.floor((Math.random() * 3) + 1)).toString()
 
-const renderCel = (storeCell, rowIndex, cellIndex, symbol, hasTurn, gameId) => {
+const renderCel = (makeMove, rowIndex, cellIndex, symbol, hasTurn, gameId) => {
   return (
-    <button
+     <button
       className="board-tile"
       disabled={hasTurn}
-      onClick={() => {storeCell(rowIndex, cellIndex)}}
+      onClick={() => {makeMove(rowIndex, cellIndex)}}
       key={`${rowIndex}-${cellIndex}`}
-    ><Link to ={`/games/${gameId}/images/${id}`}>{symbol || '_'}</Link></button>
+    >{symbol || '_'}</button>
   )
 }
-export default ({board, storeCell, gameId}) => board.map((cells, rowIndex) =>
+export default ({board, makeMove, gameId}) => board.map((cells, rowIndex) =>
   <div key={rowIndex}>
-    {cells.map((symbol, cellIndex) => renderCel(storeCell, rowIndex, cellIndex,symbol,false, gameId))}
+    {cells.map((symbol, cellIndex) => renderCel(makeMove, rowIndex, cellIndex,symbol,false, gameId))}
   </div>
 )

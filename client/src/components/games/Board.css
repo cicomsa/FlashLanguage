@@ -1,4 +1,22 @@
 .board-tile {
-  height: 50px;
-  width: 50px;
+  height: 200px;
+  width: 200px;
+  background-image: 'https://media0.giphy.com/avatars/100soft/WahNEDdlGjRZ.gif';
+  font-size: 70px;
+  decoration: none;
+}
+
+.Link {
+
+    font-size: 70px;
+}
+
+.button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
 }

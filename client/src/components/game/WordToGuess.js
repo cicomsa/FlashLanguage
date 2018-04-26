@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 
 class WordToGuess extends PureComponent {
 
-    componentWillMount(props){
+    componentWillMount(){
       this.props.fetchImage(this.props.match.params.imageid)
       this.props.getGames()
   }
@@ -36,13 +36,13 @@ class WordToGuess extends PureComponent {
   // }
 
     render() {
-        const {game, updateGame, input, image, currentCell } = this.props
+        const {game, image } = this.props
 
       return (
         <div>
         <img src={image.imageUrl} alt="dog" width="500px"></img>
         <Link to ={`/games/5`}>__</Link>
-    
+        <p>{game.id}</p>
         <FormPage />
         <button onClick={() => console.log("nada")}>Next image</button>
         </div>
